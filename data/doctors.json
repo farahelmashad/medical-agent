@@ -1,0 +1,96 @@
+{
+  "clinic": {
+    "name": "Cairo Medical Center",
+    "address": "15 Tahrir Square, Downtown Cairo, Egypt",
+    "phone": "+20 2 1234 5678",
+    "email": "info@cairomedical.com",
+    "working_hours": "Sunday to Thursday, 9am to 5pm",
+    "emergency": "Available 24/7 on +20 2 9999 0000"
+  },
+  "doctors": [
+    {
+      "id": "dr001",
+      "name": "Dr. Ahmed Hassan",
+      "specialization": "Cardiology",
+      "bio": "Dr. Ahmed Hassan is a cardiologist with over 15 years of experience in treating heart diseases, hypertension, and cardiovascular conditions. He completed his fellowship at Cairo University Hospital.",
+      "working_days": ["Sunday", "Monday", "Wednesday"],
+      "working_hours": "9am - 2pm",
+      "slot_duration_minutes": 30,
+      "consultation_fee": "500 EGP"
+    },
+    {
+      "id": "dr002",
+      "name": "Dr. Sara Mostafa",
+      "specialization": "Dermatology",
+      "bio": "Dr. Sara Mostafa specializes in skin conditions, cosmetic dermatology, and hair treatments. She has 10 years of experience and trained at Ain Shams University.",
+      "working_days": ["Monday", "Tuesday", "Thursday"],
+      "working_hours": "10am - 3pm",
+      "slot_duration_minutes": 30,
+      "consultation_fee": "400 EGP"
+    },
+    {
+      "id": "dr003",
+      "name": "Dr. Omar Khalil",
+      "specialization": "Orthopedics",
+      "bio": "Dr. Omar Khalil is an orthopedic surgeon specializing in bone fractures, joint replacements, and sports injuries. He has 12 years of experience.",
+      "working_days": ["Sunday", "Tuesday", "Wednesday", "Thursday"],
+      "working_hours": "11am - 4pm",
+      "slot_duration_minutes": 45,
+      "consultation_fee": "600 EGP"
+    },
+    {
+      "id": "dr004",
+      "name": "Dr. Nadia Fouad",
+      "specialization": "Pediatrics",
+      "bio": "Dr. Nadia Fouad is a pediatrician with 8 years of experience caring for newborns, children, and adolescents. She is known for her gentle and patient approach.",
+      "working_days": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+      "working_hours": "9am - 1pm",
+      "slot_duration_minutes": 20,
+      "consultation_fee": "350 EGP"
+    },
+    {
+      "id": "dr005",
+      "name": "Dr. Youssef Adel",
+      "specialization": "General Practice",
+      "bio": "Dr. Youssef Adel is a general practitioner handling routine checkups, chronic disease management, and referrals. Available most days with flexible slots.",
+      "working_days": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+      "working_hours": "9am - 3pm",
+      "slot_duration_minutes": 20,
+      "consultation_fee": "250 EGP"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Where is the clinic located?",
+      "answer": "Cairo Medical Center is located at 15 Tahrir Square, Downtown Cairo, Egypt."
+    },
+    {
+      "question": "What are the clinic working hours?",
+      "answer": "The clinic is open Sunday to Thursday from 9am to 5pm. We are closed on Fridays and Saturdays."
+    },
+    {
+      "question": "How do I book an appointment?",
+      "answer": "You can book an appointment by telling us your preferred doctor, date, and time. We will check availability and confirm your booking."
+    },
+    {
+      "question": "Can I cancel or reschedule my appointment?",
+      "answer": "Yes, you can cancel or reschedule your appointment at any time. Please provide your name and appointment details and we will handle it immediately."
+    },
+    {
+      "question": "Is there parking available?",
+      "answer": "Yes, free parking is available for patients in the building's underground garage."
+    },
+    {
+      "question": "Do you accept insurance?",
+      "answer": "We accept most major Egyptian insurance providers including GlobeMed, AXA, and Allianz. Please bring your insurance card on the day of your visit."
+    },
+    {
+      "question": "What should I bring to my appointment?",
+      "answer": "Please bring your national ID, insurance card if applicable, and any previous medical reports or test results relevant to your condition."
+    },
+    {
+      "question": "Is there an emergency service?",
+      "answer": "Yes, our emergency line is available 24/7. You can reach us at +20 2 9999 0000 for urgent cases."
+    }
+  ]
+}
