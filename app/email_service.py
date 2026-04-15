@@ -10,32 +10,24 @@ from googleapiclient.discovery import build
 
 load_dotenv()
 
-SCOPES        = ["https://www.googleapis.com/auth/gmail.send"]
-OAUTH_FILE    = "gmail_oauth.json"
-TOKEN_FILE    = "token.json"
-CLINIC_EMAIL  = os.getenv("CLINIC_EMAIL")
-CLINIC_NAME   = "Cairo Medical Center"
+SCOPES= ["https://www.googleapis.com/auth/gmail.send"]
+OAUTH_FILE= "gmail_oauth.json"
+TOKEN_FILE= "token.json"
+CLINIC_EMAIL= os.getenv("CLINIC_EMAIL")
+CLINIC_NAME= "Cairo Medical Center"
 
 _service = None
 
 
 def _get_service():
-    """
-    Return (or create) the Gmail API service.
-    First run: opens browser for OAuth consent.
-    After that: uses saved token.json automatically.
-    """
     global _service
     if _service is not None:
         return _service
-
     creds = None
 
-    # Load saved token if it exists
     if os.path.exists(TOKEN_FILE):
         creds = Credentials.from_authorized_user_file(TOKEN_FILE, SCOPES)
 
-    # If no valid token, run OAuth flow
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
@@ -44,7 +36,6 @@ def _get_service():
             creds = flow.run_local_server(port=8080)
 
 
-        # Save token for future runs
         with open(TOKEN_FILE, "w") as f:
             f.write(creds.to_json())
 
@@ -53,28 +44,19 @@ def _get_service():
 
 
 def _send_email(to: str, subject: str, html_body: str):
-    """
-    Build and send an email via Gmail API.
-    Encodes the message in base64 as required by the API.
-    """
     service = _get_service()
 
     message = MIMEMultipart("alternative")
-    message["From"]    = f"{CLINIC_NAME} <{CLINIC_EMAIL}>"
-    message["To"]      = to
+    message["From"]= f"{CLINIC_NAME} <{CLINIC_EMAIL}>"
+    message["To"]= to
     message["Subject"] = subject
     message.attach(MIMEText(html_body, "html"))
 
     raw = base64.urlsafe_b64encode(message.as_bytes()).decode()
-    service.users().messages().send(
-        userId="me",
-        body={"raw": raw}
-    ).execute()
+    service.users().messages().send(userId="me",body={"raw": raw}).execute()
 
 
-# ── Email templates ───────────────────────────────────────────────────────────
 def send_confirmation(to: str, patient_name: str, doctor: str, date: str, time: str):
-    """Send a booking confirmation email."""
     subject = f"Appointment Confirmed — {CLINIC_NAME}"
     body    = f"""
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto;">
