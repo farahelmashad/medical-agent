@@ -4,9 +4,9 @@ A conversational AI agent that handles end-to-end medical appointment management
 
 Live demo → [Cairo Medical Center on HF Spaces](https://huggingface.co/spaces/farahelmashad/medical-agent)
 
----
 
-[![Demo Video](https://img.shields.io/badge/Watch%20Demo-YouTube-red?style=for-the-badge&logo=youtube)](your-youtube-link-here)
+
+[![Demo Video](https://img.shields.io/badge/%20Demo-YouTube-red?style=for-the-badge&logo=youtube)](https://youtu.be/gCYeiEvTP6s)
 
 
 ---
