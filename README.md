@@ -2,7 +2,7 @@
 
 A conversational AI agent that handles end-to-end medical appointment management for a clinic. Patients can book, cancel, and update appointments, ask about doctors, and get clinic information.
 
-Live demo → [Cairo Medical Center on HF Spaces](https://huggingface.co/spaces/farahelmashad/medical-agent)
+App on HF → [Cairo Medical Center on HF Spaces](https://huggingface.co/spaces/farahelmashad/medical-agent)
 
 
 
