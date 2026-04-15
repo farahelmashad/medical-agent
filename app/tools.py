@@ -1,17 +1,7 @@
 from langchain_core.tools import tool
 from app.rag import search
-from app.sheets import (
-    get_free_slots,
-    get_booking,
-    create_booking,
-    cancel_booking,
-    update_booking,
-)
-from app.email_service import (
-    send_confirmation,
-    send_cancellation,
-    send_update,
-)
+from app.sheets import (get_free_slots,get_booking,create_booking,cancel_booking,update_booking,)
+from app.email_service import (send_confirmation,send_cancellation,send_update,)
 
 
 @tool
@@ -41,13 +31,7 @@ def check_availability(doctor_name: str, date: str) -> str:
 
 
 @tool
-def book_appointment(
-    patient_name: str,
-    email: str,
-    doctor: str,
-    date: str,
-    time: str
-) -> str:
+def book_appointment(patient_name: str,email: str,doctor: str,date: str,time: str) -> str:
     """
     Book an appointment for a patient.
     Requires: patient full name, email address, doctor full name,
@@ -56,8 +40,7 @@ def book_appointment(
     """
     success = create_booking(patient_name, email, doctor, date, time)
     if not success:
-        return (
-            f"Sorry, the slot at {time} with {doctor} on {date} is no longer available. "
+        return (f"Sorry, the slot at {time} with {doctor} on {date} is no longer available. "
             f"Please check availability again and choose another slot."
         )
     send_confirmation(email, patient_name, doctor, date, time)
@@ -65,7 +48,6 @@ def book_appointment(
         f"Appointment successfully booked for {patient_name} with {doctor} "
         f"on {date} at {time}. A confirmation email has been sent to {email}."
     )
-
 
 @tool
 def get_patient_booking(patient_name: str) -> str:
@@ -97,26 +79,15 @@ def cancel_patient_booking(patient_name: str) -> str:
     success, details = cancel_booking(patient_name)
     if not success:
         return f"No active booking found for {patient_name} to cancel."
-    send_cancellation(
-        details["email"],
-        patient_name,
-        details["doctor"],
-        details["date"],
-        details["time"],
-    )
+    send_cancellation(details["email"],patient_name,details["doctor"],details["date"],details["time"],)
     return (
         f"Booking for {patient_name} with {details['doctor']} on "
         f"{details['date']} at {details['time']} has been successfully cancelled. "
         f"A cancellation email has been sent to {details['email']}."
     )
 
-
 @tool
-def update_patient_booking(
-    patient_name: str,
-    field: str,
-    new_value: str
-) -> str:
+def update_patient_booking(patient_name: str,field: str,new_value: str) -> str:
     """
     Update a specific field in a patient's active booking.
     field must be one of: doctor, date, time, email.
@@ -132,27 +103,11 @@ def update_patient_booking(
             f"Could not update booking — the requested {field} '{new_value}' "
             f"is not available. Please check availability and try again."
         )
-    send_update(
-        updated["email"],
-        patient_name,
-        updated["doctor"],
-        updated["date"],
-        updated["time"],
-        field,
-        new_value,
-    )
+    send_update(updated["email"],patient_name,updated["doctor"],updated["date"],updated["time"],field,new_value,)
     return (
         f"Booking for {patient_name} has been updated successfully. "
         f"{field.capitalize()} changed to {new_value}. "
         f"An update confirmation has been sent to {updated['email']}."
     )
 
-
-tools = [
-    search_clinic_info,
-    check_availability,
-    book_appointment,
-    get_patient_booking,
-    cancel_patient_booking,
-    update_patient_booking,
-]
+tools = [search_clinic_info,check_availability,book_appointment,get_patient_booking,cancel_patient_booking,update_patient_booking,]
