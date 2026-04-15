@@ -5,11 +5,7 @@ from pydantic import BaseModel
 from app.agent import chat
 from langchain_core.messages import HumanMessage, AIMessage
 
-app = FastAPI(
-    title="Cairo Medical Center — AI Receptionist",
-    description="Medical appointment booking agent powered by LangGraph",
-    version="1.0.0",
-)
+app = FastAPI(title="Cairo Medical Center — AI Receptionist", description="Medical appointment booking agent powered by LangGraph",version="1.0.0",)
 
 app.add_middleware(CORSMiddleware,allow_origins=["*"],allow_methods=["*"],allow_headers=["*"],)
 
